@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.5)
 set(CMAKE_CXX_STANDARD 14)
 
 project(zetty)
@@ -7,4 +7,5 @@ file(GLOB_RECURSE zetty_SOURCES "src/*.cpp")
 file(GLOB_RECURSE zetty_HEADERS "include/*.hpp")
 
 include_directories(include)
-add_library(zetty ${zetty_SOURCES})
+add_executable(zetty ${zetty_SOURCES})
+target_link_libraries(zetty z)
