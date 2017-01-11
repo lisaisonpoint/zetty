@@ -76,7 +76,7 @@ gzstreambuf * gzstreambuf::close() {
 }
 
 int gzstreambuf::underflow() { // used for input buffer only
-    std::cout << "underflow gz" << '\n';
+    std::cout << "gzip: underflow called" << '\n';
     if ( gptr() && ( gptr() < egptr()))
         return * reinterpret_cast<unsigned char *>( gptr());
 
@@ -102,6 +102,8 @@ int gzstreambuf::underflow() { // used for input buffer only
 }
 
 int gzstreambuf::flush_buffer() {
+    std::cout << "gzip: flushing buffer" << '\n';
+
     // Separate the writing of the buffer from overflow() and
     // sync() operation.
     int w = pptr() - pbase();
@@ -112,6 +114,8 @@ int gzstreambuf::flush_buffer() {
 }
 
 int gzstreambuf::overflow( int c) { // used for output buffer only
+    std::cout << "gzip: overflow called" << '\n';
+
     if ( ! ( mode & std::ios::out) || ! opened)
         return EOF;
     if (c != EOF) {
@@ -124,6 +128,8 @@ int gzstreambuf::overflow( int c) { // used for output buffer only
 }
 
 int gzstreambuf::sync() {
+    std::cout << "gzip: sync called" << '\n';
+
     // Changed to use flush_buffer() instead of overflow( EOF)
     // which caused improper behavior with std::endl and flush(),
     // bug reported by Vincent Ricard.

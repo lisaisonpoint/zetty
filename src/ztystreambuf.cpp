@@ -62,7 +62,10 @@ ztystreambuf* ztystreambuf::close()
 
 int ztystreambuf::flush_buffer()
 {
+    std::cout << "zetty: buffer is flushing" << '\n';
+
     int w = pptr() - pbase();
+    std::cout << "zetty: width of data is " << w << '\n';
     /*
     Here we put the algorithm for compressing the data, we have to
     determine whether we flush it by the width and/or its content.
@@ -81,7 +84,7 @@ int ztystreambuf::flush_buffer()
 // ouput to a file
 int ztystreambuf::overflow(int c)
 {
-    std::cout << "overflow" << '\n';
+    std::cout << "zetty: overflow called" << '\n';
     if (!( mode & std::ios::out) || !opened)
         return EOF;
     if (c != EOF)
@@ -97,7 +100,7 @@ int ztystreambuf::overflow(int c)
 // input to a file
 int ztystreambuf::underflow()
 {
-    std::cout << "underflow zty" << '\n';
+    std::cout << "zetty: underflow called" << '\n';
     if ( ! (mode & std::ios::in) || ! opened)
         return EOF;
 
@@ -113,7 +116,7 @@ int ztystreambuf::underflow()
 
 int ztystreambuf::sync()
 {
-    std::cout << "sync" << '\n';
+    std::cout << "zetty: sync called" << '\n';
     if ( pptr() && pptr() > pbase()) {
         if ( flush_buffer() == EOF)
             return -1;
