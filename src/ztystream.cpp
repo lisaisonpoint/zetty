@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include <zettystream.hpp>
+#include <ztystream.hpp>
 
-zettystreambuf* zettystreambuf::open(const char* name, int open_mode)
+ztystreambuf* ztystreambuf::open(const char* name, int open_mode)
 {
     if (opened)
         return 0;
@@ -33,7 +33,7 @@ zettystreambuf* zettystreambuf::open(const char* name, int open_mode)
     return this;
 }
 
-zettystreambuf* zettystreambuf::close()
+ztystreambuf* ztystreambuf::close()
 {
     if (opened)
     {
@@ -45,7 +45,7 @@ zettystreambuf* zettystreambuf::close()
     return 0;
 }
 
-int zettystreambuf::flush_buffer()
+int ztystreambuf::flush_buffer()
 {
     int w = pptr() - pbase();
     /*
@@ -64,7 +64,7 @@ int zettystreambuf::flush_buffer()
 }
 
 // ouput to a file
-int zettystreambuf::overflow(int c)
+int ztystreambuf::overflow(int c)
 {
     std::cout << "overflow" << '\n';
     if (!( mode & std::ios::out) || !opened)
@@ -80,9 +80,9 @@ int zettystreambuf::overflow(int c)
 }
 
 // input to a file
-int zettystreambuf::underflow()
+int ztystreambuf::underflow()
 {
-    std::cout << "underflow zetty" << '\n';
+    std::cout << "underflow zty" << '\n';
     if ( ! (mode & std::ios::in) || ! opened)
         return EOF;
 
@@ -96,7 +96,7 @@ int zettystreambuf::underflow()
     return *reinterpret_cast<unsigned char*>(gptr());
 }
 
-int zettystreambuf::sync()
+int ztystreambuf::sync()
 {
     std::cout << "sync" << '\n';
     if ( pptr() && pptr() > pbase()) {
@@ -104,62 +104,4 @@ int zettystreambuf::sync()
             return -1;
     }
     return 0;
-}
-
-ozettystream::ozettystream
-(
-    const char* name,
-    int open_mode
-)
-    : std::ostream(&buf)
-{
-    init(&buf);
-    open(name, open_mode);
-}
-
-ozettystream::~ozettystream()
-{
-    buf.close();
-}
-
-void ozettystream::open(const char* name, int open_mode)
-{
-    if (!buf.open(name, open_mode))
-        setstate(std::ios::badbit);
-}
-
-void ozettystream::close()
-{
-    if ( buf.is_open())
-        if ( ! buf.close())
-            setstate(std::ios::badbit);
-}
-
-izettystream::izettystream
-(
-    const char* name,
-    int open_mode
-)
-    : std::istream(&buf)
-{
-    init(&buf);
-    open(name, open_mode);
-}
-
-izettystream::~izettystream()
-{
-    buf.close();
-}
-
-void izettystream::open(const char* name, int open_mode)
-{
-    if (!buf.open(name, open_mode))
-        setstate(std::ios::badbit);
-}
-
-void izettystream::close()
-{
-    if ( buf.is_open())
-        if ( ! buf.close())
-            setstate(std::ios::badbit);
 }

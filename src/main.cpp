@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include <zettystream.hpp>
+#include <ztystream.hpp>
 #include <gzstream.hpp>
 
 int main()
@@ -9,21 +9,21 @@ int main()
     std::cout << "Hello World!" << '\n';
 
     {
-        ogzstream gz("/home/ugi/asdf.gz");
-        ozettystream zetty("/home/ugi/asdf.zty");
+        ogzstream gz("asdf.gz");
+        oztystream zty("asdf.zty");
 
         gz << "Hello World!" << '\n';
-        zetty << "Hello World!" << '\n';
+        zty << "Hello World!" << '\n';
     }
 
     {
-        igzstream gz("/home/ugi/asdf.gz");
-        izettystream zetty("/home/ugi/asdf.zty");
+        igzstream gz("asdf.gz");
+        iztystream zty("asdf.zty");
 
         std::string linegz;
         std::string linezty;
         std::getline(gz, linegz);
-        std::getline(zetty, linezty);
+        std::getline(zty, linezty);
 
         std::cout << linegz << '\n';
         std::cout << linezty << '\n';
