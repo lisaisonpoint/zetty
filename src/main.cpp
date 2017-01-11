@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 
-#include <ztystream.hpp>
+#include <iztystream.hpp>
+#include <oztystream.hpp>
 #include <gzstream.hpp>
 
 int main()

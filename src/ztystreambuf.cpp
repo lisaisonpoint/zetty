@@ -1,6 +1,21 @@
-#include <iostream>
+#include <ztystreambuf.hpp>
 
-#include <ztystream.hpp>
+ztystreambuf::ztystreambuf()
+    : opened(0)
+{
+    setp(buffer, buffer + (bufferSize-1));
+    setg(buffer,buffer,buffer);
+}
+
+ztystreambuf::~ztystreambuf()
+{
+    close();
+}
+
+int ztystreambuf::is_open()
+{
+    return opened;
+}
 
 ztystreambuf* ztystreambuf::open(const char* name, int open_mode)
 {
