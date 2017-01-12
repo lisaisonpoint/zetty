@@ -4,6 +4,7 @@
 #include <iztystream.hpp>
 #include <oztystream.hpp>
 #include <gzstream.hpp>
+#include <fstream>
 
 int main()
 {
@@ -13,13 +14,19 @@ int main()
 
     {
         //ogzstream gz("resources/comp.gz");
+        std::ifstream file("resources/alpha.water");
+        std::noskipws(file);
         oztystream zty("resources/comp.zty");
 
         //std::cout << "writing for gzip..." << '\n';
         //gz << "Hello World!" << '\n';
 
-        std::cout << "writing for zetty..." << '\n';
-        zty << "Hello World!" << '\n';
+        uint8_t x;
+        while (file >> x)
+            zty << x;
+
+        //std::cout << "writing for zetty..." << '\n';
+        //zty << "Hello World!" << '\n';
     }
 
     {
