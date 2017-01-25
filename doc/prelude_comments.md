@@ -1,3 +1,8 @@
+## blocky
+Blocky is the compression algorithm developed for the diploma thesis of FemtoLAS.
+It groups numbers with similarities and then uses the LZMA compression which greatly improves the results.
+
+
 # istream
 istream is used to convert the compressed data back into a format which is usable by OpenFOAM
 
