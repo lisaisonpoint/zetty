@@ -11,7 +11,7 @@ streambuf is in charge of the reading and writing operations
 it includes the methods sync, underflow and overflow
   
 ### sync
-if data is entered but neither underflow nor overflow is called, sync writes that data into the stream-buffer sometimes
+if data is entered but neither underflow nor overflow is called, sync writes that data into the stream-buffer in randomly chosen intervals
 ### underflow
 if the stream-buffer is empty and there is an attempt to remove values from it this method is called
 ### overflow
