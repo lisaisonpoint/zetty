@@ -1,3 +1,6 @@
+# Blocky
+It is the useable algorithm. It groups numbers with similarities and sends them through the LZMA-algorithm afterwards. LZMA is an algorithm which is used in 7-zip. 
+
 # istream
 istream is used to convert the compressed data back into a format which is usable by OpenFOAM
 
