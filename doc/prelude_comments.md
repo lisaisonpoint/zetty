@@ -1,5 +1,6 @@
 ## blocky
 Blocky is the compression algorithm developed for the diploma thesis of FemtoLAS.
+
 It groups numbers with similarities and then uses the LZMA compression (a 7zip compression algorithm) which greatly improves the results.
 
 
