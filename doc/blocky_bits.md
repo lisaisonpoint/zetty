@@ -19,8 +19,8 @@
 ```
 ### Block Header is being written
 
-  #### => 1 Bit -> if the follwing sequence of bits is a block (1) or not (0)
-     ##### 1:
+#### => 1 Bit -> if the follwing sequence of bits is a block (1) or not (0)
+##### 1:
 ```
      => 1 Bit -> has exponent or not
                   1: => 1 Bit -> is the exponent negativ 1 yes, 0 no
@@ -40,15 +40,15 @@
                   1: the max amount of bits needed to represent the max amount of bits needed to represent the max value (from metatdata) -> new max amount of bits of the max value is written (although in the program just the max amount of bits of the max value from the metadata is written)
                   0: no it should not be overridden
 ```                  
-  #### Block is written
-  ##### if all numbers have the same sign the next bit is skipped 
+#### Block is written
+##### if all numbers have the same sign the next bit is skipped 
 ```      
         => 1 Bit -> is the sign of all values in the block the same ?
                   1: yes, the sign (1: negative, 0: positive) is written
                   0: nothing is written
 ```                  
-  ###### now every value is checked, the following operations are executed for every value in the block 
-    ###### if every value in the block have different signs a bit is used otherwise no bit is used 
+###### now every value is checked, the following operations are executed for every value in the block 
+###### if every value in the block have different signs a bit is used otherwise no bit is used 
 ```        
         => 1 Bit -> decides if positive (0) or negative (1)
 ```        
@@ -62,8 +62,8 @@
 ### This operation is executed until the end of the blocks 
 
 #### The next case happens if no block is following 
-  #### => 1 Bit -> if the follwing sequence of bits is a block or not 
-   ##### 0:
+#### => 1 Bit -> if the follwing sequence of bits is a block or not 
+##### 0:
 ```     
      if all values have different signs the sign is written in front of the values 
 ```
@@ -73,7 +73,7 @@
 ```
         => the max amount of bits needed for the max value => write the number of value
 ```        
-   ###### If an exponent exists, it will be serialized through the upcoming operationn
+###### If an exponent exists, it will be serialized through the upcoming operationn
 ```        
           => 1 Bit -> positive (0) or negative (1)
           => max amount of bits for maxValue -> Value is written
