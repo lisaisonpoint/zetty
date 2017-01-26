@@ -5,8 +5,8 @@ Before the block is written => Methods are gathered
   => 1 Bit  1: Every number is positive/negative
             0: Mixed (positive + negative)
   => 1 Bit ONLY if the block has the same sign => signs for every number are defined at the beginning
-            1: Every number is positive
-            2: Every number is negative
+            0: Every number is positive
+            1: Every number is negative
   => 4 Bit the count of Bits of the biggest exponent is written (can have the maximum size of 2⁴ = 16 = int16)
   => 6 Bit the count of Bits for the biggest value is written (can have the maximum size of 2⁶ = 64 = int64)
 
