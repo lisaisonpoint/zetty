@@ -1,16 +1,24 @@
-Before the block is written => Methods are gathered
-
+##### Before the block is written => Methods are gathered
+```
   => 31 Bit ValueCount
-  
+```
+```
   => 1 Bit  1: Every number is positive/negative
             0: Mixed (positive + negative)
+```
+```
   => 1 Bit ONLY if the block has the same sign => signs for every number are defined at the beginning
-            1: Every number is positive
-            2: Every number is negative
+            0: Every number is positive
+            1: Every number is negative
+```
+```
   => 4 Bit the count of Bits of the biggest exponent is written (can have the maximum size of 2⁴ = 16 = int16)
+```
+```
   => 6 Bit the count of Bits for the biggest value is written (can have the maximum size of 2⁶ = 64 = int64)
-
-Block Header is being written
+```
+##### Block Header is being written
+```
   => 1 Bit -> if the follwing sequence of bits is a block (1) or not (0)
      1:  => 1 Bit -> has exponent or not
                   1: => 1 Bit -> is the exponent negativ 1 yes, 0 no
@@ -45,4 +53,5 @@ The next case happens if no block is following
         If an exponent exists, it will be serialized through the upcoming operationn
           => 1 Bit -> positive (0) or negative (1)
           => max amount of bits for maxValue -> Value is written
+```
 This algorithm is called for every set of numbers in brackets (in OpenFOAM files)
