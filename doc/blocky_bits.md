@@ -18,19 +18,28 @@
   => 6 Bit the count of Bits for the biggest value is written (can have the maximum size of 2⁶ = 64 = int64)
 ```
 ##### Block Header is being written
-```
+
   => 1 Bit -> if the follwing sequence of bits is a block (1) or not (0)
-     1:  => 1 Bit -> has exponent or not
+     1:
+```
+     => 1 Bit -> has exponent or not
                   1: => 1 Bit -> is the exponent negativ 1 yes, 0 no
                      => the max amount of bits needed (in metatdat) for exponents -> exponent is written 
                   0: => no exponent, nothing is written
+```
+```
         => 1 Bit -> is there a pattern or not? 
                   1: 2 Bit -> Pattern (enum) is written 
                   0: no pattern, nothing is written
+``` 
+```
         => 8 Bits -> lenght of the blocks is wirtten 
+```
+
         => 1 Bit -> should the amount of needed bits for the biggest value be overridden
                   1: the max amount of bits needed to represent the max amount of bits needed to represent the max value (from metatdata) -> new max amount of bits of the max value is written (although in the program just the max amount of bits of the max value from the metadata is written)
                   0: no it should not be overridden
+                  
 
       Block is written
       if all numbers have the same sign the next bit is skipped 
@@ -54,5 +63,5 @@ The next case happens if no block is following
         If an exponent exists, it will be serialized through the upcoming operationn
           => 1 Bit -> positive (0) or negative (1)
           => max amount of bits for maxValue -> Value is written
-```
+
 This algorithm is called for every set of numbers in brackets (in OpenFOAM files)
