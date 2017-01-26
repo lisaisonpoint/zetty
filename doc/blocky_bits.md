@@ -30,6 +30,7 @@
         => 8 Bits -> lenght of the blocks is wirtten 
         => 1 Bit -> should the amount of needed bits for the biggest value be overridden
                   1: the max amount of bits needed to represent the max amount of bits needed to represent the max value (from metatdata) -> new max amount of bits of the max value is written (although in the program just the max amount of bits of the max value from the metadata is written)
+                  0: no it should not be overridden
 
       Block is written
       if all numbers have the same sign the next bit is skipped 
